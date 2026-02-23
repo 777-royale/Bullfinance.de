@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bullfinace - Auth</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="auth-container">
+        
+        <div class="lock-container" id="lock-area">
+            <svg class="hold-circle" id="hold-circle"><circle cx="55" cy="65" r="50"></circle></svg>
+            <div class="lock-placeholder" id="the-lock">
+                <div class="keyhole"></div>
+                <div class="keyhole"></div>
+                <div class="keyhole"></div>
+                <span style="font-size: 10px; margin-top: 5px;">Schloss-Bild</span>
+            </div>
+            <div class="key-placeholder" id="key-1">K1</div>
+            <div class="key-placeholder" id="key-2">K2</div>
+            <div class="key-placeholder" id="key-3">K3</div>
+        </div>
+
+        <h2 id="auth-title">Registrierung</h2>
+        <p id="auth-subtitle" style="color: var(--text-muted); margin-bottom: 20px;">Schritt 1: Gib deine E-Mail an.</p>
+
+        <div id="step-1">
+            <input type="email" id="reg-email" placeholder="E-Mail Adresse">
+            <button class="btn btn-primary" onclick="nextStep(2)">Überprüfen</button>
+        </div>
+
+        <div id="step-2" class="step-hidden">
+            <input type="number" id="reg-code" placeholder="6-stelliger Code">
+            <button class="btn btn-primary" onclick="checkCode()">Code bestätigen</button>
+            <p id="error-msg" style="color: var(--error-red); margin-top: 10px; display: none;">Code nicht gefunden!</p>
+        </div>
+
+        <div id="step-3" class="step-hidden">
+            <input type="text" id="reg-user" placeholder="Benutzername">
+            <input type="password" id="reg-pass" placeholder="Passwort">
+            <button class="btn btn-primary" onclick="finishSetup()">Account erstellen</button>
+        </div>
+
+        <div id="step-final" class="step-hidden">
+            <p style="color: var(--neon-blue); font-weight: bold;">Schloss gedrückt halten, um Registrierung abzuschließen!</p>
+        </div>
+
+        <div id="login-area" class="step-hidden">
+            <input type="text" placeholder="Benutzername">
+            <input type="password" placeholder="Passwort">
+            <button class="btn btn-primary" onclick="alert('Geht zur Main-Page!')">Einloggen</button>
+        </div>
+
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>

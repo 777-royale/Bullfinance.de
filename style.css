@@ -1,0 +1,220 @@
+/* style.css */
+:root {
+    --bg-dark: #121212;
+    --card-bg: #1E1E1E;
+    --navy-blue: #1A3A6D;
+    --neon-blue: #00D1FF;
+    --text-light: #F5F5F5;
+    --text-muted: #A0A0A0;
+    --error-red: #FF4B4B;
+    --btn-disabled: #333333;
+    --btn-disabled-border: #222222;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    overflow-x: hidden;
+}
+
+/* === DUOLINGO 3D BUTTONS === */
+.btn {
+    display: inline-block;
+    padding: 14px 24px;
+    border-radius: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    transition: all 0.1s ease;
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Zustand: Immer anklickbar / Aktiv */
+.btn-primary {
+    background-color: var(--navy-blue);
+    color: white;
+    border-bottom: 4px solid #0d2244;
+}
+.btn-primary:active {
+    transform: translateY(4px);
+    border-bottom: 0px solid #0d2244;
+    margin-bottom: 4px;
+}
+
+/* Zustand: Noch nicht anklickbar */
+.btn-disabled {
+    background-color: var(--btn-disabled);
+    color: var(--text-muted);
+    border-bottom: 4px solid var(--btn-disabled-border);
+    cursor: not-allowed;
+}
+
+/* === LANDING PAGE === */
+.hero-section {
+    position: relative;
+    padding: 60px 20px;
+    text-align: center;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Bild leicht im Hintergrund wie bei Gemini */
+.hero-bg-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(26, 58, 109, 0.4) 0%, rgba(18, 18, 18, 1) 70%);
+    z-index: -1;
+}
+
+.hero-box {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    border: 2px solid #2A2A2A;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* === FEATURES === */
+.feature-section {
+    padding: 40px 20px;
+}
+
+.feature-block {
+    background-color: var(--card-bg);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 30px;
+    position: relative;
+    border: 2px solid #2A2A2A;
+}
+
+.placeholder-img {
+    background-color: #333;
+    border: 2px dashed #666;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 12px;
+}
+
+/* Alternierendes Layout */
+.layout-1-img-right { float: right; width: 100px; height: 100px; margin-left: 15px; }
+.layout-1-img-left { float: left; width: 100px; height: 100px; margin-right: 15px; }
+.layout-2-img { display: flex; justify-content: space-between; margin-top: 15px; gap: 10px; }
+.layout-2-img .placeholder-img { width: 48%; height: 80px; }
+
+/* === AUTHENTIFIZIERUNG (SCHLÜSSEL & SCHLOSS) === */
+.auth-container {
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    padding: 15px;
+    border-radius: 12px;
+    background-color: var(--bg-dark);
+    border: 2px solid #333;
+    color: white;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--navy-blue);
+}
+
+.lock-container {
+    height: 150px;
+    position: relative;
+    margin: 30px auto;
+    width: 100px;
+}
+
+.lock-placeholder {
+    width: 80px;
+    height: 100px;
+    background-color: #444;
+    border-radius: 15px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.keyhole {
+    width: 15px;
+    height: 15px;
+    background-color: var(--bg-dark);
+    border-radius: 50%;
+}
+
+.key-placeholder {
+    width: 30px;
+    height: 30px;
+    background-color: #FFD700; /* Gold */
+    position: absolute;
+    bottom: -50px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: all 0.8s ease-in-out;
+}
+
+/* Animationen */
+.key-fly-1 { opacity: 1; transform: translateY(-70px) rotate(90deg); left: 35px; }
+.key-fly-2 { opacity: 1; transform: translateY(-90px) rotate(90deg); left: 35px; }
+.key-fly-3 { opacity: 1; transform: translateY(-110px) rotate(90deg); left: 35px; }
+.key-break { transform: translateY(-90px) rotate(90deg) scale(0.5); opacity: 0; transition: all 0.3s; background-color: var(--error-red); }
+
+/* Halte-Kreis (SVG) */
+.hold-circle {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 110px;
+    height: 130px;
+    pointer-events: none;
+}
+.hold-circle circle {
+    fill: none;
+    stroke: var(--neon-blue);
+    stroke-width: 4;
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    transition: stroke-dashoffset 1.5s linear;
+}
+.holding circle { stroke-dashoffset: 0; }
+.step-hidden { display: none; }
